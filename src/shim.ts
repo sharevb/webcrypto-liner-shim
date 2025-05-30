@@ -9,10 +9,12 @@ if (nativeCrypto) {
 }
 
 try {
-  // Replace original crypto by liner
-  delete (self as any).crypto;
-  window.crypto = new Crypto();
-  Object.freeze(window.crypto);
+  // Replace original crypto by liner if needed
+  if (!(self.crypto && self.crypto.subtle)) {
+    delete (self as any).crypto;
+    window.crypto = new Crypto();
+    Object.freeze(window.crypto);
+  }
 } catch (e) {
   Debug.error(e);
 }
