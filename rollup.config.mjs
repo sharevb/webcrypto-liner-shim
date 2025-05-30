@@ -5,43 +5,6 @@ import typescript from "rollup-plugin-typescript2";
 import commonjs from "@rollup/plugin-commonjs";
 import pkg from "./package.json" assert { type: "json" };
 
-const external = Object.keys(pkg.dependencies)
-  .concat(["crypto"]);
-let banner = [
-  "/**",
-  ` * Copyright (c) ${new Date().getFullYear()}, Peculiar Ventures, LLC.`,
-  " */",
-  "",
-].join("\n");
-
-const main = {
-  input: "src/lib.ts",
-  plugins: [
-    typescript({
-      check: true,
-      clean: true,
-      tsconfigOverride: {
-        compilerOptions: {
-          module: "es2015",
-        }
-      }
-    }),
-  ],
-  external,
-  output: [
-    {
-      banner,
-      file: pkg.main,
-      format: "cjs",
-    },
-    {
-      banner,
-      file: pkg.module,
-      format: "es",
-    },
-  ],
-};
-
 function babelOutput(ie11) {
   const targets = ie11
     ? { ie: "11" }
@@ -64,14 +27,7 @@ function babelOutput(ie11) {
 
 
 //#region Browser
-const browserExternals = {
-  // "des.js": "des",
-  // "util": "{}",
-  // "elliptic": "self.elliptic",
-  // "asmcrypto.js": "self.asmCrypto",
-};
-
-const browser = [
+export default [
   {
     input: "src/shim.ts",
     plugins: [
@@ -91,52 +47,15 @@ const browser = [
         }
       }),
     ],
-    external: Object.keys(browserExternals),
     output: [
       {
-        file: pkg["browser:es5"],
+        file: pkg.main,
         format: "iife",
-        globals: browserExternals,
         name: "liner",
         plugins: [
-          babelOutput(true),
-        ]
-      },
-      {
-        file: pkg["browser:es5:min"],
-        format: "iife",
-        globals: browserExternals,
-        name: "liner",
-        plugins: [
-          babelOutput(true),
-          terser()
-        ]
-      },
-      {
-        file: pkg["browser"],
-        format: "iife",
-        globals: browserExternals,
-        name: "liner",
-        plugins: [
-          babelOutput(false),
-        ]
-      },
-      {
-        file: pkg["browser:min"],
-        format: "iife",
-        globals: browserExternals,
-        name: "liner",
-        plugins: [
-          babelOutput(false),
-          terser()
+          babelOutput(false)
         ]
       }
     ]
   },
 ];
-//#endregion
-
-export default [
-  main,
-  ...browser,
-]
