@@ -1,3 +1,10 @@
+# webcrypto-liner-shim
+
+Typescript/Vite... importable version of `webcrypto-liner`:
+
+- `main` entry of `package.json` points to `webcrypto-liner.shim.min.js` to use `import "webcrypto-liner-shim";` in ts code
+- embed all polyfills (`elliptic` and `asmcrypto.js`)
+
 # webcrypto-liner
 [![license](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/PeculiarVentures/webcrypto-liner/master/LICENSE)
 [![npm version](https://badge.fury.io/js/webcrypto-liner.svg)](https://badge.fury.io/js/webcrypto-liner)

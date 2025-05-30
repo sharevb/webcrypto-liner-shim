@@ -1,8 +1,8 @@
 {
-  "name": "webcrypto-liner",
+  "name": "webcrypto-liner-shim",
   "version": "1.4.3",
   "description": "A WebCrypto polyfill that \"smooths out\" the rough-edges in existing User Agent implementations.",
-  "main": "build/index.js",
+  "main": "build/webcrypto-liner.shim.min.js",
   "module": "build/index.es.js",
   "browser": "build/webcrypto-liner.shim.mjs",
   "browser:min": "build/webcrypto-liner.shim.min.mjs",
@@ -34,7 +34,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PeculiarVentures/webcrypto-liner"
+    "url": "git+https://github.com/sharevb/webcrypto-liner-shim"
   },
   "dependencies": {
     "@peculiar/asn1-schema": "^2.3.8",

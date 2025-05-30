@@ -66,9 +66,9 @@ function babelOutput(ie11) {
 //#region Browser
 const browserExternals = {
   // "des.js": "des",
-  "util": "{}",
-  "elliptic": "self.elliptic",
-  "asmcrypto.js": "self.asmCrypto",
+  // "util": "{}",
+  // "elliptic": "self.elliptic",
+  // "asmcrypto.js": "self.asmCrypto",
 };
 
 const browser = [
