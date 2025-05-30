@@ -1,6 +1,6 @@
 {
   "name": "webcrypto-liner-shim",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "description": "A WebCrypto polyfill that \"smooths out\" the rough-edges in existing User Agent implementations.",
   "main": "build/webcrypto-liner.shim.js",
   "types": "index.d.ts",
